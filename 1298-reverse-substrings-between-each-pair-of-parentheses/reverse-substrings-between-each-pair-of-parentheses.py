@@ -23,22 +23,15 @@ class Solution:
         #     if b > 1 and s[j] == ")" or s[j] == "(":
         #         break
         # return *(str1+str2+str3)
-        stack = []
+        stack = [""]
+
         for ch in s:
             if ch == '(':
-                stack.append(ch)
+                stack.append("")
             elif ch == ')':
-                temp = []
-                while stack[-1] != '(':
-                    temp.append(stack.pop())
-                stack.pop()
-
-                for c in temp:
-                    stack.append(c)
+                temp = stack.pop()
+                stack[-1] += temp[::-1]
             else:
-                stack.append(ch)
-        return ''.join(stack)
-            
+                stack[-1] += ch
 
-
-        
+        return stack[0]
