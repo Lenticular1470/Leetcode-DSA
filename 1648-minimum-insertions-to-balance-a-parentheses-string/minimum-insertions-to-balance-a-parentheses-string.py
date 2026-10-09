@@ -5,7 +5,7 @@ class Solution:
         for ch in s:
             if ch == '(':
                 n += 2
-                if n%2:
+                if n%2!=0:
                     i +=1
                     n -= 1
             else:
